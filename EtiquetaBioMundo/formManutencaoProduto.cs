@@ -38,5 +38,14 @@ namespace EtiquetaBioMundo
             produtoRepository.Save();
             MessageBox.Show(produtoModel.Id.ToString());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<ProdutoModel> lista = produtoRepository.GetAll().ToList();
+            foreach (var item in lista)
+            {
+                MessageBox.Show(item.Id.ToString());
+            }
+        }
     }
 }
