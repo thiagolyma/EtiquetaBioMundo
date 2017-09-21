@@ -1,0 +1,17 @@
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaBioMundo.exe.config
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaBioMundo.exe
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaBioMundo.pdb
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaDAL.dll
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaModel.dll
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EntityFramework.dll
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaDAL.pdb
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaDAL.dll.config
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EtiquetaModel.pdb
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\bin\Debug\EntityFramework.xml
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.csprojResolveAssemblyReference.cache
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.formManutencaoProduto.resources
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.Properties.Resources.resources
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.csproj.GenerateResource.Cache
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.csproj.CoreCompileInputs.cache
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.exe
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaBioMundo\obj\Debug\EtiquetaBioMundo.pdb

@@ -1,0 +1,5 @@
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\bin\Debug\EtiquetaModel.dll
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\bin\Debug\EtiquetaModel.pdb
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.csproj.CoreCompileInputs.cache
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.dll
+C:\Codigos Fonte\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.pdb
