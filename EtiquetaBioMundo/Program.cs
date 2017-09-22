@@ -16,7 +16,7 @@ namespace EtiquetaBioMundo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formManutencaoProduto());
+            Application.Run(new formFundoPrincipal());
         }
     }
 }

@@ -11,6 +11,11 @@ namespace EtiquetaDAL.Contexto
     public class EtiquetaContexto : DbContext
     {
         public EtiquetaContexto() : base("BancoDadosEtiqueta") { }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<EtiquetaContexto>(null);
+        //}
+
         public DbSet<ProdutoModel> Produto { get; set; }
         public DbSet<EtiquetaImpressaModel> Etiqueta { get; set; }
         public DbSet<InformacaoNutricionalModel> InformacaoNutricional { get; set; }

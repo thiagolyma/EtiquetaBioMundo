@@ -59,22 +59,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="formManutencaoProduto.cs">
+    <Compile Include="formFundoPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>formManutencaoProduto.cs</DependentUpon>
+    <Compile Include="formFundoPrincipal.Designer.cs">
+      <DependentUpon>formFundoPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="formMain.cs">
+    <Compile Include="formManutencaoProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formMain.Designer.cs">
-      <DependentUpon>formMain.cs</DependentUpon>
+    <Compile Include="formManutencaoProdutos.Designer.cs">
+      <DependentUpon>formManutencaoProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="formManutencaoProduto.resx">
-      <DependentUpon>formManutencaoProduto.cs</DependentUpon>
+    <EmbeddedResource Include="formFundoPrincipal.resx">
+      <DependentUpon>formFundoPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formManutencaoProdutos.resx">
+      <DependentUpon>formManutencaoProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,9 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EtiquetaDAL\EtiquetaDAL.csproj">
-      <Project>{b0ca6709-edb4-4d10-9a06-16d78d95b305}</Project>
-      <Name>EtiquetaDAL</Name>
+    <ProjectReference Include="..\EtiquetaBLL\EtiquetaBLL.csproj">
+      <Project>{298aa9cb-516f-452c-89e4-5b884c8b57e0}</Project>
+      <Name>EtiquetaBLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\EtiquetaModel\EtiquetaModel.csproj">
       <Project>{ba82e207-f64d-47b9-bc49-0c054aa84ae4}</Project>

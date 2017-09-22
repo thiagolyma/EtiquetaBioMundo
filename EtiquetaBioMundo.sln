@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtiquetaModel", "EtiquetaMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtiquetaBioMundo", "EtiquetaBioMundo\EtiquetaBioMundo.csproj", "{08ABE9BF-6A8B-491B-A8BA-3F6770E24FB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtiquetaBLL", "EtiquetaBLL\EtiquetaBLL.csproj", "{298AA9CB-516F-452C-89E4-5B884C8B57E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{08ABE9BF-6A8B-491B-A8BA-3F6770E24FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08ABE9BF-6A8B-491B-A8BA-3F6770E24FB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08ABE9BF-6A8B-491B-A8BA-3F6770E24FB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{298AA9CB-516F-452C-89E4-5B884C8B57E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{298AA9CB-516F-452C-89E4-5B884C8B57E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{298AA9CB-516F-452C-89E4-5B884C8B57E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{298AA9CB-516F-452C-89E4-5B884C8B57E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

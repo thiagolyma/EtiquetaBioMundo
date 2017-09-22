@@ -10,6 +10,5 @@ namespace EtiquetaDAL.Repositorio
 {
     public class EtiquetaRepository : Repositorio<EtiquetaImpressaModel>
     {
-
     }
 }
