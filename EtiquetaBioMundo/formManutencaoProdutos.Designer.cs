@@ -167,6 +167,7 @@
             this.btExcluir.TabIndex = 8;
             this.btExcluir.Text = "&Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // btDuplicar
             // 
@@ -177,6 +178,7 @@
             this.btDuplicar.TabIndex = 7;
             this.btDuplicar.Text = "&Duplicar";
             this.btDuplicar.UseVisualStyleBackColor = true;
+            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
             // 
             // btNovo
             // 

@@ -59,11 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormatHelper.cs" />
     <Compile Include="formFundoPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formFundoPrincipal.Designer.cs">
       <DependentUpon>formFundoPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formManutencaoInfNutricionais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formManutencaoInfNutricionais.Designer.cs">
+      <DependentUpon>formManutencaoInfNutricionais.cs</DependentUpon>
     </Compile>
     <Compile Include="formManutencaoProdutos.cs">
       <SubType>Form</SubType>
@@ -75,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formFundoPrincipal.resx">
       <DependentUpon>formFundoPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formManutencaoInfNutricionais.resx">
+      <DependentUpon>formManutencaoInfNutricionais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formManutencaoProdutos.resx">
       <DependentUpon>formManutencaoProdutos.cs</DependentUpon>

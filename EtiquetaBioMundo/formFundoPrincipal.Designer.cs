@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.btCadastrar = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstProdutos = new System.Windows.Forms.ListView();
             this.btImprimir = new System.Windows.Forms.Button();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btPesquisar = new System.Windows.Forms.Button();
             this.lblPesquisa = new System.Windows.Forms.Label();
+            this.colCodigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPreco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btCadastrar
@@ -46,13 +50,22 @@
             this.btCadastrar.UseVisualStyleBackColor = true;
             this.btCadastrar.Click += new System.EventHandler(this.btCadastrar_Click);
             // 
-            // listView1
+            // lstProdutos
             // 
-            this.listView1.Location = new System.Drawing.Point(17, 58);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(809, 433);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstProdutos.CheckBoxes = true;
+            this.lstProdutos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Id,
+            this.colCodigo,
+            this.colDescricao,
+            this.colPreco});
+            this.lstProdutos.FullRowSelect = true;
+            this.lstProdutos.GridLines = true;
+            this.lstProdutos.Location = new System.Drawing.Point(17, 58);
+            this.lstProdutos.Name = "lstProdutos";
+            this.lstProdutos.Size = new System.Drawing.Size(809, 433);
+            this.lstProdutos.TabIndex = 1;
+            this.lstProdutos.UseCompatibleStateImageBehavior = false;
+            this.lstProdutos.View = System.Windows.Forms.View.Details;
             // 
             // btImprimir
             // 
@@ -87,6 +100,29 @@
             this.lblPesquisa.TabIndex = 5;
             this.lblPesquisa.Text = "Digite o código ou a descrição para pesquisar";
             // 
+            // colCodigo
+            // 
+            this.colCodigo.DisplayIndex = 0;
+            this.colCodigo.Text = "Código";
+            this.colCodigo.Width = 200;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.DisplayIndex = 1;
+            this.colDescricao.Text = "Descrição";
+            this.colDescricao.Width = 500;
+            // 
+            // colPreco
+            // 
+            this.colPreco.DisplayIndex = 2;
+            this.colPreco.Text = "Preço Venda";
+            this.colPreco.Width = 100;
+            // 
+            // Id
+            // 
+            this.Id.DisplayIndex = 3;
+            this.Id.Width = 0;
+            // 
             // formFundoPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -96,7 +132,7 @@
             this.Controls.Add(this.btPesquisar);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.btImprimir);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstProdutos);
             this.Controls.Add(this.btCadastrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -111,10 +147,14 @@
         #endregion
 
         private System.Windows.Forms.Button btCadastrar;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstProdutos;
         private System.Windows.Forms.Button btImprimir;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btPesquisar;
         private System.Windows.Forms.Label lblPesquisa;
+        private System.Windows.Forms.ColumnHeader colCodigo;
+        private System.Windows.Forms.ColumnHeader colDescricao;
+        private System.Windows.Forms.ColumnHeader colPreco;
+        private System.Windows.Forms.ColumnHeader Id;
     }
 }
