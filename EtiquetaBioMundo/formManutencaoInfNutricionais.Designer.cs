@@ -53,9 +53,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.Size = new System.Drawing.Size(80, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Descrição:";
+            this.label1.Text = "Descrição:*";
             // 
             // txtUnidadeMedida
             // 
@@ -70,9 +70,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 17);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Embalagem:";
+            this.label2.Text = "UND:*";
             // 
             // txtQuantidade
             // 
@@ -81,15 +81,16 @@
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(114, 22);
             this.txtQuantidade.TabIndex = 4;
+            this.txtQuantidade.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(148, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(47, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "QTD:";
+            this.label3.Text = "QTD:*";
             // 
             // txtValorDiario
             // 
@@ -98,19 +99,19 @@
             this.txtValorDiario.Name = "txtValorDiario";
             this.txtValorDiario.Size = new System.Drawing.Size(114, 22);
             this.txtValorDiario.TabIndex = 6;
+            this.txtValorDiario.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(279, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(52, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "% VD:";
+            this.label4.Text = "% VD:*";
             // 
             // btExcluir
             // 
-            this.btExcluir.Enabled = false;
             this.btExcluir.Location = new System.Drawing.Point(269, 161);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(127, 66);
@@ -121,7 +122,6 @@
             // 
             // btGravar
             // 
-            this.btGravar.Enabled = false;
             this.btGravar.Location = new System.Drawing.Point(135, 161);
             this.btGravar.Name = "btGravar";
             this.btGravar.Size = new System.Drawing.Size(127, 66);
@@ -145,8 +145,11 @@
             this.Controls.Add(this.txtUnidadeMedida);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDescricao);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "formManutencaoInfNutricionais";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro/Edição de Informações Nutricionais";
             this.ResumeLayout(false);

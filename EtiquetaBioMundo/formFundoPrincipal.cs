@@ -24,26 +24,41 @@ namespace EtiquetaBioMundo
 
         private void CarregarLista()
         {
-            lstProdutos.Clear();
-            List<ProdutoModel> listaProdutos = produtoController.BuscarTodos();
-            listaProdutos.ForEach(x =>
+            ListViewItem lstItem = null;
+            lstProdutos.Items.Clear();
+            List<ProdutoModel> produtos = produtoController.BuscarTodos();
+            produtos.ForEach(x =>
             {
-               ListViewItem lstItem = new ListViewItem(x.Id.ToString());
-               lstItem.SubItems.Add(x.Codigo);
-               lstItem.SubItems.Add(x.Descricao);
-               lstItem.SubItems.Add(x.PrecoVenda.ToString());
-               lstProdutos.Items.Add(lstItem);
+                lstItem = new ListViewItem(x.Id.ToString());
+                lstItem.SubItems.Add(x.Codigo.Trim());
+                lstItem.SubItems.Add(x.Descricao.Trim());
+                lstItem.SubItems.Add(x.PrecoVenda.ToString().Trim());
+                lstProdutos.Items.Add(lstItem);
             });
         }
-
+        
         private void btCadastrar_Click(object sender, EventArgs e)
         {
-            ProdutoModel produto = new ProdutoModel();
-            produto.Id = 5;
-            produto = new ProdutoController().Buscar(produto);
-            formManutencaoProdutos formCad = new formManutencaoProdutos(produto);
+            formManutencaoProdutos formCad = new formManutencaoProdutos();
             formCad.ShowDialog();
         }
 
+        private void btImprimir_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void lstProdutos_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstProdutos.SelectedItems.Count > 0)
+            {
+                ProdutoModel produto = new ProdutoModel();
+                produto.Id =  Int32.Parse(lstProdutos.SelectedItems[0].SubItems[0].Text);
+                produto = produtoController.Buscar(produto);
+                formManutencaoProdutos formCad = new formManutencaoProdutos(produto);
+                formCad.ShowDialog();
+                CarregarLista();
+            }
+        }
     }
 }

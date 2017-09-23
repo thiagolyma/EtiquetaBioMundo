@@ -28,21 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ColumnHeader colCodigo;
+            this.colDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btCadastrar = new System.Windows.Forms.Button();
             this.lstProdutos = new System.Windows.Forms.ListView();
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPreco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btImprimir = new System.Windows.Forms.Button();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btPesquisar = new System.Windows.Forms.Button();
             this.lblPesquisa = new System.Windows.Forms.Label();
-            this.colCodigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colPreco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colQtdEtiquetas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            colCodigo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
+            // 
+            // colCodigo
+            // 
+            colCodigo.DisplayIndex = 0;
+            colCodigo.Text = "Código";
+            colCodigo.Width = 200;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.DisplayIndex = 1;
+            this.colDescricao.Text = "Descrição";
+            this.colDescricao.Width = 566;
             // 
             // btCadastrar
             // 
-            this.btCadastrar.Location = new System.Drawing.Point(679, 507);
+            this.btCadastrar.Location = new System.Drawing.Point(840, 507);
             this.btCadastrar.Name = "btCadastrar";
             this.btCadastrar.Size = new System.Drawing.Size(147, 69);
             this.btCadastrar.TabIndex = 0;
@@ -52,29 +66,46 @@
             // 
             // lstProdutos
             // 
+            this.lstProdutos.AutoArrange = false;
             this.lstProdutos.CheckBoxes = true;
             this.lstProdutos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id,
-            this.colCodigo,
+            colCodigo,
             this.colDescricao,
-            this.colPreco});
+            this.colPreco,
+            this.colQtdEtiquetas});
             this.lstProdutos.FullRowSelect = true;
             this.lstProdutos.GridLines = true;
+            this.lstProdutos.LabelWrap = false;
             this.lstProdutos.Location = new System.Drawing.Point(17, 58);
             this.lstProdutos.Name = "lstProdutos";
-            this.lstProdutos.Size = new System.Drawing.Size(809, 433);
+            this.lstProdutos.Size = new System.Drawing.Size(970, 433);
             this.lstProdutos.TabIndex = 1;
             this.lstProdutos.UseCompatibleStateImageBehavior = false;
             this.lstProdutos.View = System.Windows.Forms.View.Details;
+            this.lstProdutos.DoubleClick += new System.EventHandler(this.lstProdutos_DoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DisplayIndex = 3;
+            this.Id.Width = 0;
+            // 
+            // colPreco
+            // 
+            this.colPreco.DisplayIndex = 2;
+            this.colPreco.Text = "Preço Venda";
+            this.colPreco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.colPreco.Width = 100;
             // 
             // btImprimir
             // 
-            this.btImprimir.Location = new System.Drawing.Point(526, 507);
+            this.btImprimir.Location = new System.Drawing.Point(687, 507);
             this.btImprimir.Name = "btImprimir";
             this.btImprimir.Size = new System.Drawing.Size(147, 69);
             this.btImprimir.TabIndex = 2;
             this.btImprimir.Text = "&Imprimir Etiqueta";
             this.btImprimir.UseVisualStyleBackColor = true;
+            this.btImprimir.Click += new System.EventHandler(this.btImprimir_Click);
             // 
             // txtPesquisa
             // 
@@ -100,34 +131,17 @@
             this.lblPesquisa.TabIndex = 5;
             this.lblPesquisa.Text = "Digite o código ou a descrição para pesquisar";
             // 
-            // colCodigo
+            // colQtdEtiquetas
             // 
-            this.colCodigo.DisplayIndex = 0;
-            this.colCodigo.Text = "Código";
-            this.colCodigo.Width = 200;
-            // 
-            // colDescricao
-            // 
-            this.colDescricao.DisplayIndex = 1;
-            this.colDescricao.Text = "Descrição";
-            this.colDescricao.Width = 500;
-            // 
-            // colPreco
-            // 
-            this.colPreco.DisplayIndex = 2;
-            this.colPreco.Text = "Preço Venda";
-            this.colPreco.Width = 100;
-            // 
-            // Id
-            // 
-            this.Id.DisplayIndex = 3;
-            this.Id.Width = 0;
+            this.colQtdEtiquetas.Text = "Qtd. Etiquetas";
+            this.colQtdEtiquetas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.colQtdEtiquetas.Width = 100;
             // 
             // formFundoPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 588);
+            this.ClientSize = new System.Drawing.Size(999, 588);
             this.Controls.Add(this.lblPesquisa);
             this.Controls.Add(this.btPesquisar);
             this.Controls.Add(this.txtPesquisa);
@@ -152,9 +166,9 @@
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btPesquisar;
         private System.Windows.Forms.Label lblPesquisa;
-        private System.Windows.Forms.ColumnHeader colCodigo;
-        private System.Windows.Forms.ColumnHeader colDescricao;
-        private System.Windows.Forms.ColumnHeader colPreco;
         private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.ColumnHeader colDescricao;
+        private System.Windows.Forms.ColumnHeader colQtdEtiquetas;
+        private System.Windows.Forms.ColumnHeader colPreco;
     }
 }

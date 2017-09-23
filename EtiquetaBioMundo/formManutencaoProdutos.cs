@@ -28,25 +28,47 @@ namespace EtiquetaBioMundo
         {
             InitializeComponent();
             InicializarCamposTela(produto);
+            CarregaListaInformacoesNutricionais();
+        }
+         
+        private void CarregaListaInformacoesNutricionais()
+        {
+            lstInformacoesNutricionais.Items.Clear();
+            List<InformacaoNutricionalModel> infNutricionais = null;
+            infNutricionais = infContoller.BuscarTodos();
+            infNutricionais.ForEach(x=>{
+                ListViewItem lstItem = new ListViewItem(x.Id.ToString());
+                lstItem.SubItems.Add(x.Descricao.Trim());
+                lstItem.SubItems.Add(x.UnidadeMedia.Trim());
+                lstItem.SubItems.Add(x.ValorDiario.ToString());
+                lstItem.SubItems.Add(x.Quantidade.ToString());
+                lstInformacoesNutricionais.Items.Add(lstItem);
+            });
+            
+
         }
 
         private void btGravar_Click(object sender, EventArgs e)
         {
             MontarObjetoProduto();
-            if (produtoModel != null && produtoModel.Id > 0)
+            if (ValidaGravacao(produtoModel))
             {
-                produtoController.Atualizar(produtoModel);
-                MessageBox.Show("Produto [" + produtoModel.Id + "] atualizado com sucesso.");
+                if (produtoModel != null && produtoModel.Id > 0)
+                {
+                    produtoController.Atualizar(produtoModel);
+                    MessageBox.Show("Produto [" + produtoModel.Id + "] atualizado com sucesso.");
+                }
+                else
+                {
+                    produtoController.Cadastrar(produtoModel);
+                    MessageBox.Show("Produto [" + produtoModel.Id + "] cadastrado com sucesso.");
+                }
+                btGravar.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
+                btExcluir.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
+                btDuplicar.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
             }
             else
-            {
-                produtoController.Cadastrar(produtoModel);
-                MessageBox.Show("Produto [" + produtoModel.Id + "] cadastrado com sucesso.");
-            }
-            btGravar.Text = produtoModel != null && produtoModel.Id > 0 ? "Alterar" : "Cadastrar";
-            btGravar.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
-            btExcluir.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
-            btDuplicar.Enabled = produtoModel != null && produtoModel.Id > 0 ? true : false;
+                MessageBox.Show("Os campos obrigatórios não foram preenchidos corretamente.", "Erro na validação!");
         }
 
         private void InicializarCamposTela(ProdutoModel produto)
@@ -79,6 +101,20 @@ namespace EtiquetaBioMundo
             produtoModel.InformacoesNutricionais = MotarInformacoesNutricionaisProduto();
         }
 
+        private bool ValidaGravacao(ProdutoModel produto)
+        {
+            bool response = false;
+            if (produto.Descricao.Trim().Length > 0 
+                && produto.Codigo.Trim().Length > 0 
+                && produto.Ingrediente.Trim().Length > 0
+                && produto.PrecoVenda > 0)
+            {
+                response = true;
+            }
+
+            return response;
+        }
+
         /// <summary>
         /// Captura todos as informações nutricionais da lista e monta coleção de informações de um produto
         /// </summary>
@@ -92,6 +128,7 @@ namespace EtiquetaBioMundo
 
         private void btNovo_Click(object sender, EventArgs e)
         {
+            produtoModel = null;
             InicializaCamposForm();
             AtualizarAmbienteCadastro(true);
         }
@@ -102,11 +139,12 @@ namespace EtiquetaBioMundo
             btExcluir.Enabled = statusAbilitado;
             btGravar.Enabled = statusAbilitado;
             grpProduto.Enabled = statusAbilitado;
+            btGravar.Text = produtoModel != null && produtoModel.Id > 0 ? "Alterar" : "Cadastrar";
         }
 
         private void InicializaCamposForm()
         {
-            grpProduto.Enabled = false;
+            grpProduto.Enabled = true;
             txtCodigo.Text = "";
             txtDescricao.Text = "";
             txtPrecoVenda.Text = "0,00";
@@ -127,6 +165,7 @@ namespace EtiquetaBioMundo
                 if (result == DialogResult.Yes)
                 {
                     produtoController.Remover(produtoModel);
+                    InicializaCamposForm();
                     AtualizarAmbienteCadastro(false);
                 }
             }
@@ -135,7 +174,33 @@ namespace EtiquetaBioMundo
         private void btDuplicar_Click(object sender, EventArgs e)
         {
             produtoModel = null;
+            AtualizarAmbienteCadastro(true);
             MontarObjetoProduto();
+        }
+
+        private void btCadastrarInfNutricional_Click(object sender, EventArgs e)
+        {
+            formManutencaoInfNutricionais frmInf = new formManutencaoInfNutricionais();
+            frmInf.ShowDialog();
+            CarregaListaInformacoesNutricionais();
+        }
+
+        private void lstInformacoesNutricionais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstInformacoesNutricionais_DoubleClick(object sender, EventArgs e)
+        {
+            if(lstInformacoesNutricionais.SelectedItems.Count > 0)
+            {
+                InformacaoNutricionalModel infModel = new InformacaoNutricionalModel();
+                infModel.Id = Int32.Parse(lstInformacoesNutricionais.SelectedItems[0].SubItems[0].Text);
+                infModel = infContoller.Buscar(infModel);
+                formManutencaoInfNutricionais frmInf = new formManutencaoInfNutricionais(infModel);
+                frmInf.ShowDialog();
+                CarregaListaInformacoesNutricionais();
+            }
         }
     }
 }
