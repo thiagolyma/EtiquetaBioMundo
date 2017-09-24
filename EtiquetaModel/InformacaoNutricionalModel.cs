@@ -11,11 +11,15 @@ namespace EtiquetaModel
     [Table("TB_InformacaoNutricional")]
     public class InformacaoNutricionalModel : AbstractModel
     {
-        [StringLength(50)]
+        [MaxLength(50)]
+        [Required]
         public string Descricao { get; set; }
-        [StringLength(10)]
+        [MaxLength(10)]
         public string UnidadeMedia { get; set; }
         public decimal Quantidade { get; set; }
         public decimal ValorDiario { get; set; }
+        [ForeignKey("Produto")]
+        public int ProdutoId { get; set; }
+        public virtual ProdutoModel Produto { get; set; }
     }
 }

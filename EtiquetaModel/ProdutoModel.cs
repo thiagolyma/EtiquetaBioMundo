@@ -11,9 +11,10 @@ namespace EtiquetaModel
     [Table("TB_Produto")]
     public class ProdutoModel : AbstractModel
     {
-        [StringLength(20)]
+        [MaxLength(20)]
         public string Codigo { get; set; }
-        [StringLength(200)]
+        [MaxLength(200)]
+        [Required]
         public string Descricao { get; set; }
         public virtual ICollection<InformacaoNutricionalModel> InformacoesNutricionais { get; set; }
         public decimal PrecoVenda { get; set; }

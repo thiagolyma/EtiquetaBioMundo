@@ -27,8 +27,18 @@ namespace EtiquetaBLL
 
         public List<ProdutoModel> BuscarPorDescricao(ProdutoModel obj)
         {
-            List<ProdutoModel> response = null;
-            produtoRep.Get(x => x.Descricao.Trim().ToUpper().Contains(obj.Descricao.Trim().ToUpper()));
+
+            string[] valores = obj.Descricao.Trim().Split(' ');
+            List<ProdutoModel> response = produtoRep.Get(x => {
+                bool resp = true;
+                foreach (string s in valores)
+                {
+                    string target = x.Descricao.ToUpper();
+                    if (!StringHelper.Contains(target, s))
+                        resp = false; break;
+                }
+                return resp;
+            }).ToList();
             return response;
         }
 

@@ -16,20 +16,30 @@ namespace EtiquetaBioMundo
     {
         private InformacaoNutricionalController infController = new InformacaoNutricionalController();
         private InformacaoNutricionalModel informacaoNutricionalModel = null;
-        public formManutencaoInfNutricionais()
+        private ProdutoModel produtoModel;
+
+        public formManutencaoInfNutricionais(ProdutoModel produto)
         {
             InitializeComponent();
-            InicializarCamposTela(null);
+            produtoModel = produto;
         }
 
+        /// <summary>
+        /// Sobregarga do método construtor. Utilizado para edição de Informações Nutricionais
+        /// </summary>
+        /// <param name="produto"></param>
         public formManutencaoInfNutricionais(InformacaoNutricionalModel informacaoNutricional)
         {
             InitializeComponent();
-            InicializarCamposTela(informacaoNutricional);
+            PreencherCamposTela(informacaoNutricional);
             AtualizarAmbienteCadastro();
+            produtoModel = informacaoNutricional.Produto;
         }
-
-        private void InicializarCamposTela(InformacaoNutricionalModel informacao)
+        /// <summary>
+        /// Preenche todos os campos da tela para edição de informação Nutricionail
+        /// </summary>
+        /// <param name="informacao">Objeto do tipo InformacaoNutricionalModel utilizado para preencher os campos da tela</param>
+        private void PreencherCamposTela(InformacaoNutricionalModel informacao)
         {
             if (informacao != null)
             {
@@ -40,8 +50,26 @@ namespace EtiquetaBioMundo
                 txtValorDiario.Text = informacao.ValorDiario.ToString();
             }
         }
+        /// <summary>
+        /// Captura dados do formulário de cadastro e carrega em um objeto InformacaoNutricionalModel
+        /// </summary>
+        private void MontarObjetoInformacaoNutricional()
+        {
+            if (informacaoNutricionalModel == null)
+                informacaoNutricionalModel = new InformacaoNutricionalModel();
 
-        private bool ValidaGravacao(InformacaoNutricionalModel informacao)
+            informacaoNutricionalModel.DataCadastro = DateTime.Now;
+            informacaoNutricionalModel.Descricao = txtDescricao.Text.Trim();
+            informacaoNutricionalModel.UnidadeMedia = txtUnidadeMedida.Text.Trim();
+            informacaoNutricionalModel.Quantidade = Decimal.Parse(txtQuantidade.Text.Trim());
+            informacaoNutricionalModel.ValorDiario = Decimal.Parse(txtValorDiario.Text.Trim());
+            informacaoNutricionalModel.Produto = produtoModel;
+        }
+        /// <summary>
+        /// Validar valores dos campos do formulário antes da gravação e edição
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidaGravacao()
         {
             bool response = false;
             if (txtDescricao.Text.Trim().Length > 0
@@ -51,6 +79,9 @@ namespace EtiquetaBioMundo
                 response = true;
             return response;
         }
+        /// <summary>
+        /// Muda aparência e acessibilidade de campos da tela de acordo com o botão de ação ou contexto de cadastro
+        /// </summary>
         private void AtualizarAmbienteCadastro()
         {
             btGravar.Text = informacaoNutricionalModel != null && informacaoNutricionalModel.Id > 0 ? "Alterar" : "Cadastrar";
@@ -59,7 +90,7 @@ namespace EtiquetaBioMundo
         private void btGravar_Click(object sender, EventArgs e)
         {
             MontarObjetoInformacaoNutricional();
-            if (ValidaGravacao(informacaoNutricionalModel))
+            if (ValidaGravacao())
             {
                 if (informacaoNutricionalModel != null && informacaoNutricionalModel.Id > 0)
                 {
@@ -74,18 +105,6 @@ namespace EtiquetaBioMundo
             }
             else
                 MessageBox.Show("Os campos obrigatórios não foram preenchidos corretamente.", "Erro na validação!");
-        }
-
-        private void MontarObjetoInformacaoNutricional()
-        {
-            if (informacaoNutricionalModel == null)
-                informacaoNutricionalModel = new InformacaoNutricionalModel();
-
-            informacaoNutricionalModel.DataCadastro = DateTime.Now;
-            informacaoNutricionalModel.Descricao = txtDescricao.Text.Trim();
-            informacaoNutricionalModel.UnidadeMedia = txtUnidadeMedida.Text.Trim();
-            informacaoNutricionalModel.Quantidade = Decimal.Parse(txtQuantidade.Text.Trim());
-            informacaoNutricionalModel.ValorDiario = Decimal.Parse(txtValorDiario.Text.Trim());
         }
 
         private void btExcluir_Click(object sender, EventArgs e)

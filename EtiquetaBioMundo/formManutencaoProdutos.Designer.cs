@@ -241,7 +241,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(683, 37);
+            this.label5.Location = new System.Drawing.Point(528, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 17);
             this.label5.TabIndex = 9;
@@ -250,7 +250,7 @@
             // 
             // btCadastrarInfNutricional
             // 
-            this.btCadastrarInfNutricional.Location = new System.Drawing.Point(897, 33);
+            this.btCadastrarInfNutricional.Location = new System.Drawing.Point(752, 29);
             this.btCadastrarInfNutricional.Name = "btCadastrarInfNutricional";
             this.btCadastrarInfNutricional.Size = new System.Drawing.Size(34, 24);
             this.btCadastrarInfNutricional.TabIndex = 10;
