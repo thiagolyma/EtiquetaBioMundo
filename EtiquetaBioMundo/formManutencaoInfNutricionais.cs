@@ -22,17 +22,18 @@ namespace EtiquetaBioMundo
         {
             InitializeComponent();
             produtoModel = produto;
+            AtualizarAmbienteCadastro(true);
         }
 
         /// <summary>
-        /// Sobregarga do método construtor. Utilizado para edição de Informações Nutricionais
+        /// Sobrecarga do método construtor. Utilizado para edição de Informações Nutricionais
         /// </summary>
         /// <param name="produto"></param>
         public formManutencaoInfNutricionais(InformacaoNutricionalModel informacaoNutricional)
         {
             InitializeComponent();
             PreencherCamposTela(informacaoNutricional);
-            AtualizarAmbienteCadastro();
+            AtualizarAmbienteCadastro(true);
             produtoModel = informacaoNutricional.Produto;
         }
         /// <summary>
@@ -82,11 +83,13 @@ namespace EtiquetaBioMundo
         /// <summary>
         /// Muda aparência e acessibilidade de campos da tela de acordo com o botão de ação ou contexto de cadastro
         /// </summary>
-        private void AtualizarAmbienteCadastro()
+        private void AtualizarAmbienteCadastro(bool statusAbilitado)
         {
             btGravar.Text = informacaoNutricionalModel != null && informacaoNutricionalModel.Id > 0 ? "Alterar" : "Cadastrar";
-            btExcluir.Enabled = informacaoNutricionalModel != null && informacaoNutricionalModel.Id > 0 ? true : false;
+            btExcluir.Enabled = statusAbilitado;
+            btGravar.Enabled = statusAbilitado;
         }
+
         private void btGravar_Click(object sender, EventArgs e)
         {
             MontarObjetoInformacaoNutricional();
@@ -115,9 +118,15 @@ namespace EtiquetaBioMundo
                 if (resposta == DialogResult.Yes)
                 {
                     infController.Remover(informacaoNutricionalModel);
-                    this.Dispose();
+                    AtualizarAmbienteCadastro(false);
                 }
             }
+        }
+
+        private void btNovo_Click(object sender, EventArgs e)
+        {
+            informacaoNutricionalModel = null;
+            AtualizarAmbienteCadastro(true);
         }
     }
 }

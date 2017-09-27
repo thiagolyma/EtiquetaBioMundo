@@ -28,17 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.DadosEtiquetaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.DadosEtiquetaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "EtiquetaBioMundo.Etiqueta1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1, -1);
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DadosRelatorioEtiqueta";
+            reportDataSource1.Value = this.DadosEtiquetaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "EtiquetaBioMundo.RelatorioEtiqueta.RelatorioEtiqueta.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1136, 656);
+            this.reportViewer1.Size = new System.Drawing.Size(1138, 657);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // DadosEtiquetaBindingSource
+            // 
+            this.DadosEtiquetaBindingSource.DataSource = typeof(EtiquetaBioMundo.RelatorioEtiqueta.DadosEtiqueta);
             // 
             // formRelatorioEtiqueta
             // 
@@ -53,6 +65,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formRelatorioEtiqueta_Load);
             this.Resize += new System.EventHandler(this.formRelatorioEtiqueta_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.DadosEtiquetaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -60,5 +73,6 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource DadosEtiquetaBindingSource;
     }
 }

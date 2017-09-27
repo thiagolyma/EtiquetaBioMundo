@@ -35,6 +35,7 @@
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPreco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colQtdEtiquetas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDiasValidade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btImprimir = new System.Windows.Forms.Button();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btPesquisar = new System.Windows.Forms.Button();
@@ -70,7 +71,8 @@
             this.colCodigo,
             this.colDescricao,
             this.colPreco,
-            this.colQtdEtiquetas});
+            this.colQtdEtiquetas,
+            this.colDiasValidade});
             this.lstProdutos.FullRowSelect = true;
             this.lstProdutos.GridLines = true;
             this.lstProdutos.LabelEdit = true;
@@ -81,6 +83,7 @@
             this.lstProdutos.TabIndex = 1;
             this.lstProdutos.UseCompatibleStateImageBehavior = false;
             this.lstProdutos.View = System.Windows.Forms.View.Details;
+            this.lstProdutos.SelectedIndexChanged += new System.EventHandler(this.lstProdutos_SelectedIndexChanged);
             this.lstProdutos.DoubleClick += new System.EventHandler(this.lstProdutos_DoubleClick);
             // 
             // Id
@@ -99,6 +102,11 @@
             this.colQtdEtiquetas.Text = "Qtd. Etiquetas";
             this.colQtdEtiquetas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colQtdEtiquetas.Width = 100;
+            // 
+            // colDiasValidade
+            // 
+            this.colDiasValidade.Text = "Dias Valid.";
+            this.colDiasValidade.Width = 106;
             // 
             // btImprimir
             // 
@@ -173,5 +181,6 @@
         private System.Windows.Forms.ColumnHeader colDescricao;
         public System.Windows.Forms.ColumnHeader colQtdEtiquetas;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.Windows.Forms.ColumnHeader colDiasValidade;
     }
 }

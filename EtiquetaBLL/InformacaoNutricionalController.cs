@@ -34,8 +34,10 @@ namespace EtiquetaBLL
 
         public List<InformacaoNutricionalModel> BuscarPorProduto(ProdutoModel produto)
         {
+
             List<InformacaoNutricionalModel> response = null;
-            response = infRep.Get(x => x.Produto.Id == produto.Id).ToList();
+            if (produto != null)
+                response = infRep.Get(x => x.Produto.Id == produto.Id).ToList();
             return response;
         }
 

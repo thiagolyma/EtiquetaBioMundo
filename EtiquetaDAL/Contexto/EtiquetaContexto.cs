@@ -12,7 +12,7 @@ namespace EtiquetaDAL.Contexto
     {
         public EtiquetaContexto() : base("BancoDadosEtiqueta") {
             Database.SetInitializer<EtiquetaContexto>(new CreateDatabaseIfNotExists<EtiquetaContexto>());
-            Database.Initialize(false);
+            Database.Initialize(true);
         }
 
         public DbSet<ProdutoModel> Produto { get; set; }

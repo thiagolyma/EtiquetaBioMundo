@@ -54,5 +54,11 @@ namespace EtiquetaBLL
             etiquetaRep.Save();
             return response;
         }
+
+        public void RemoverTodos()
+        {
+            etiquetaRep.Remove(x=>x.Id > 0);
+            etiquetaRep.Save();
+        }
     }
 }

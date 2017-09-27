@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btExcluir = new System.Windows.Forms.Button();
             this.btGravar = new System.Windows.Forms.Button();
+            this.btNovo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDescricao
@@ -112,9 +113,10 @@
             // 
             // btExcluir
             // 
+            this.btExcluir.Enabled = false;
             this.btExcluir.Location = new System.Drawing.Point(269, 161);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(127, 66);
+            this.btExcluir.Size = new System.Drawing.Size(123, 66);
             this.btExcluir.TabIndex = 10;
             this.btExcluir.Text = "&Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
@@ -122,19 +124,31 @@
             // 
             // btGravar
             // 
-            this.btGravar.Location = new System.Drawing.Point(135, 161);
+            this.btGravar.Enabled = false;
+            this.btGravar.Location = new System.Drawing.Point(140, 161);
             this.btGravar.Name = "btGravar";
-            this.btGravar.Size = new System.Drawing.Size(127, 66);
+            this.btGravar.Size = new System.Drawing.Size(123, 66);
             this.btGravar.TabIndex = 9;
             this.btGravar.Text = "&Gravar";
             this.btGravar.UseVisualStyleBackColor = true;
             this.btGravar.Click += new System.EventHandler(this.btGravar_Click);
             // 
+            // btNovo
+            // 
+            this.btNovo.Location = new System.Drawing.Point(12, 161);
+            this.btNovo.Name = "btNovo";
+            this.btNovo.Size = new System.Drawing.Size(123, 66);
+            this.btNovo.TabIndex = 11;
+            this.btNovo.Text = "&Novo";
+            this.btNovo.UseVisualStyleBackColor = true;
+            this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
+            // 
             // formManutencaoInfNutricionais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 236);
+            this.ClientSize = new System.Drawing.Size(402, 236);
+            this.Controls.Add(this.btNovo);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btGravar);
             this.Controls.Add(this.label4);
@@ -169,5 +183,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btGravar;
+        private System.Windows.Forms.Button btNovo;
     }
 }

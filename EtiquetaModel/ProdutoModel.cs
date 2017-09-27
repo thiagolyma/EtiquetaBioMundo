@@ -18,8 +18,11 @@ namespace EtiquetaModel
         public string Descricao { get; set; }
         public virtual ICollection<InformacaoNutricionalModel> InformacoesNutricionais { get; set; }
         public decimal PrecoVenda { get; set; }
-        [StringLength(500)]
+        [MaxLength(500)]
         public string Ingrediente { get; set; }
-
+        [MaxLength(10)]
+        public string UnidadeMedida { get; set; }
+        public decimal QuantidadePorcao { get; set; }
+        public int QuantidadeDiasValidade { get; set; }
     }
 }

@@ -13,9 +13,6 @@ namespace EtiquetaModel
     {
         public DateTime? DataFabricao { get; set; }
         public DateTime? DataValidade { get; set; }
-        public decimal QuantidadePorcao { get; set; }
-        [StringLength(10)]
-        public string UnidadeMedida { get; set; }
         public virtual ProdutoModel Produto { get; set; }
     }
 }
