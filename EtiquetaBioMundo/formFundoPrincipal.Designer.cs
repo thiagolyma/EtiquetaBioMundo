@@ -49,6 +49,7 @@
             this.colPrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQtdEtiqueta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colValidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkSelecaoItem = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,19 +58,20 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkSelecaoItem);
             this.panel1.Controls.Add(this.lblPesquisa);
             this.panel1.Controls.Add(this.btPesquisar);
             this.panel1.Controls.Add(this.txtPesquisa);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1243, 73);
+            this.panel1.Size = new System.Drawing.Size(1101, 73);
             this.panel1.TabIndex = 7;
             // 
             // lblPesquisa
             // 
             this.lblPesquisa.AutoSize = true;
-            this.lblPesquisa.Location = new System.Drawing.Point(11, 9);
+            this.lblPesquisa.Location = new System.Drawing.Point(520, 3);
             this.lblPesquisa.Name = "lblPesquisa";
             this.lblPesquisa.Size = new System.Drawing.Size(293, 17);
             this.lblPesquisa.TabIndex = 8;
@@ -79,22 +81,22 @@
             // 
             this.btPesquisar.BackColor = System.Drawing.Color.Transparent;
             this.btPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btPesquisar.Image")));
-            this.btPesquisar.Location = new System.Drawing.Point(461, 23);
+            this.btPesquisar.Location = new System.Drawing.Point(970, 22);
             this.btPesquisar.Name = "btPesquisar";
-            this.btPesquisar.Size = new System.Drawing.Size(105, 34);
-            this.btPesquisar.TabIndex = 7;
-            this.btPesquisar.Text = "Pesquisar";
-            this.btPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPesquisar.Size = new System.Drawing.Size(117, 36);
+            this.btPesquisar.TabIndex = 2;
+            this.btPesquisar.Text = "&Pesquisar";
             this.btPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btPesquisar.UseVisualStyleBackColor = false;
             this.btPesquisar.Click += new System.EventHandler(this.btPesquisar_Click);
             // 
             // txtPesquisa
             // 
-            this.txtPesquisa.Location = new System.Drawing.Point(14, 29);
+            this.txtPesquisa.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Location = new System.Drawing.Point(523, 23);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(441, 22);
-            this.txtPesquisa.TabIndex = 6;
+            this.txtPesquisa.Size = new System.Drawing.Size(441, 31);
+            this.txtPesquisa.TabIndex = 1;
             this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
             // 
             // panel2
@@ -104,12 +106,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 492);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1243, 96);
+            this.panel2.Size = new System.Drawing.Size(1101, 96);
             this.panel2.TabIndex = 8;
             // 
             // btImprimir
             // 
-            this.btImprimir.Location = new System.Drawing.Point(931, 15);
+            this.btImprimir.Location = new System.Drawing.Point(787, 15);
             this.btImprimir.Name = "btImprimir";
             this.btImprimir.Size = new System.Drawing.Size(147, 69);
             this.btImprimir.TabIndex = 4;
@@ -119,7 +121,7 @@
             // 
             // btCadastrar
             // 
-            this.btCadastrar.Location = new System.Drawing.Point(1084, 15);
+            this.btCadastrar.Location = new System.Drawing.Point(940, 15);
             this.btCadastrar.Name = "btCadastrar";
             this.btCadastrar.Size = new System.Drawing.Size(147, 69);
             this.btCadastrar.TabIndex = 5;
@@ -133,7 +135,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 73);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1243, 419);
+            this.panel3.Size = new System.Drawing.Size(1101, 419);
             this.panel3.TabIndex = 9;
             // 
             // dgvEtiqueta
@@ -154,8 +156,8 @@
             this.dgvEtiqueta.Location = new System.Drawing.Point(0, 0);
             this.dgvEtiqueta.Name = "dgvEtiqueta";
             this.dgvEtiqueta.RowTemplate.Height = 24;
-            this.dgvEtiqueta.Size = new System.Drawing.Size(1243, 419);
-            this.dgvEtiqueta.TabIndex = 8;
+            this.dgvEtiqueta.Size = new System.Drawing.Size(1101, 419);
+            this.dgvEtiqueta.TabIndex = 3;
             this.dgvEtiqueta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEtiqueta_CellContentClick);
             this.dgvEtiqueta.DoubleClick += new System.EventHandler(this.dgvEtiqueta_DoubleClick);
             // 
@@ -227,11 +229,22 @@
             this.colValidade.ToolTipText = "Digite os dias de validade do produto";
             this.colValidade.Width = 124;
             // 
+            // chkSelecaoItem
+            // 
+            this.chkSelecaoItem.AutoSize = true;
+            this.chkSelecaoItem.Location = new System.Drawing.Point(75, 46);
+            this.chkSelecaoItem.Name = "chkSelecaoItem";
+            this.chkSelecaoItem.Size = new System.Drawing.Size(136, 21);
+            this.chkSelecaoItem.TabIndex = 9;
+            this.chkSelecaoItem.Text = "Selecionar todos";
+            this.chkSelecaoItem.UseVisualStyleBackColor = true;
+            this.chkSelecaoItem.CheckedChanged += new System.EventHandler(this.chkSelecaoItem_CheckedChanged);
+            // 
             // formFundoPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 588);
+            this.ClientSize = new System.Drawing.Size(1101, 588);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -268,5 +281,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecoVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQtdEtiqueta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValidade;
+        private System.Windows.Forms.CheckBox chkSelecaoItem;
     }
 }

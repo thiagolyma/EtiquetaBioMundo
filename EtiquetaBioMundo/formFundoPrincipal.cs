@@ -55,15 +55,10 @@ namespace EtiquetaBioMundo
             });
 
         }
-
-        private void btCadastrar_Click(object sender, EventArgs e)
-        {
-            formManutencaoProdutos formCad = new formManutencaoProdutos();
-            formCad.ShowDialog();
-            CarregarLista(null);
-        }
-
-        private void btImprimir_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Percorrer a lista de produtos selecionados e imprimir etiqueta
+        /// </summary>
+        private void ImprimirEtiqueta()
         {
             EtiquetaController etiquetaController = new EtiquetaController();
             etiquetaController.RemoverTodos();
@@ -101,6 +96,18 @@ namespace EtiquetaBioMundo
         }
 
 
+        private void btCadastrar_Click(object sender, EventArgs e)
+        {
+            formManutencaoProdutos formCad = new formManutencaoProdutos();
+            formCad.ShowDialog();
+            CarregarLista(null);
+        }
+
+        private void btImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimirEtiqueta();
+        }
+
 
         private void btPesquisar_Click(object sender, EventArgs e)
         {
@@ -126,6 +133,8 @@ namespace EtiquetaBioMundo
             toolTip.ShowAlways = true;
             toolTip.SetToolTip(txtPesquisa, "Digite a descrição desejada e pressione a tecla ENTER para pesquisar.");
             toolTip.SetToolTip(btCadastrar, "Clique aqui para abrir a tela de cadastro de produtos e informações nutricionais.");
+            toolTip.SetToolTip(btImprimir, "Clique aqui para imprimir a etiqueta do produto selecionado.");
+            toolTip.SetToolTip(dgvEtiqueta, "Duplo clique na lateral da linha para editar o item selecionado.");
         }
 
         private void dgvEtiqueta_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -143,6 +152,14 @@ namespace EtiquetaBioMundo
                 formManutencaoProdutos formCad = new formManutencaoProdutos(produto);
                 formCad.ShowDialog();
                 CarregarLista(null);
+            }
+        }
+
+        private void chkSelecaoItem_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow linha in dgvEtiqueta.Rows)
+            {
+                linha.Cells["colSelecionada"].Value = chkSelecaoItem.Checked;
             }
         }
     }
