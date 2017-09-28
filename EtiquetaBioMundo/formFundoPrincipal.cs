@@ -37,8 +37,7 @@ namespace EtiquetaBioMundo
         /// </summary>
         private void InicializaCamposTela()
         {
-            lstProdutos.Columns[1].Width = 100;
-            lstProdutos.Columns[2].Width = 340;
+
         }
         /// <summary>
         /// Carregar lista de produtos
@@ -46,29 +45,15 @@ namespace EtiquetaBioMundo
         /// <param name="listProdutos">Lisa de produtos previamente passada por quem deseja popular a ListView</param>
         private void CarregarLista(List<ProdutoModel> listProdutos)
         {
-            ListViewItem lstItem = null;
             List<ProdutoModel> produtos = null;
-            lstProdutos.Items.Clear();
-            if (listProdutos != null && listProdutos.Count > 0)
-                produtos = listProdutos;
-            else
-                produtos = produtoController.BuscarTodos();
-            Color shaded = Color.FromArgb(240, 240, 240);
-            int i = 0;
+            produtos = listProdutos;
+            if (produtos == null) produtos = produtoController.BuscarTodos();
+            dgvEtiqueta.Rows.Clear();
             produtos.ForEach(x =>
             {
-                lstItem = new ListViewItem(x.Id.ToString());
-                lstItem.SubItems.Add(x.Codigo.Trim());
-                lstItem.SubItems.Add(x.Descricao.Trim());
-                lstItem.SubItems.Add(x.PrecoVenda.ToString().Trim());
-
-                if (i++ % 2 == 1)
-                {
-                    lstItem.BackColor = shaded;
-                    lstItem.UseItemStyleForSubItems = true;
-                }
-                lstProdutos.Items.Add(lstItem);
+                dgvEtiqueta.Rows.Add(false, x.Id, x.Codigo, x.Descricao, x.PrecoVenda.ToString());
             });
+
         }
 
         private void btCadastrar_Click(object sender, EventArgs e)
@@ -83,23 +68,28 @@ namespace EtiquetaBioMundo
             EtiquetaController etiquetaController = new EtiquetaController();
             etiquetaController.RemoverTodos();
             bool imprimir = false;
-            for (int i = 0; i < lstProdutos.Items.Count; i++)
+            foreach (DataGridViewRow linha in dgvEtiqueta.Rows)
             {
-                if (lstProdutos.Items[i].Checked  == true)
+                bool colSelecionada = (bool)linha.Cells["colSelecionada"].Value;
+                if (colSelecionada == true)
                 {
                     ProdutoModel produto = new ProdutoModel();
-                    produto.Id = Int32.Parse(lstProdutos.Items[i].Text.ToString());
+                    produto.Id = Int32.Parse(linha.Cells["colId"].Value.ToString());
                     produto = produtoController.Buscar(produto);
-                    EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                    for (int i = 0; i < Int32.Parse(linha.Cells["colQtdEtiqueta"].Value.ToString()); i++)
                     {
-                        DataCadastro = DateTime.Now,
-                        DataFabricao = DateTime.Now, //Pegar da tela ou do produto
-                        DataValidade = DateTime.Now.AddDays (1), 
-                        Produto = produto
-                    };
-                    etiquetaController.Cadastrar(etiqueta);
-                    imprimir = true;
+                        EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                        {
+                            DataCadastro = DateTime.Now,
+                            DataFabricao = DateTime.Now,
+                            DataValidade = DateTime.Now.AddDays(Int32.Parse(linha.Cells["colValidade"].Value.ToString())),
+                            Produto = produto
+                        };
+                        etiquetaController.Cadastrar(etiqueta);
+                        imprimir = true;
+                    }
                 }
+
             }
             if (imprimir)
             {
@@ -110,18 +100,7 @@ namespace EtiquetaBioMundo
                 MessageBox.Show("Nenhum produto foi selecionado para imprimir etiqueta.");
         }
 
-        private void lstProdutos_DoubleClick(object sender, EventArgs e)
-        {
-            if (lstProdutos.SelectedItems.Count > 0)
-            {
-                ProdutoModel produto = new ProdutoModel();
-                produto.Id = Int32.Parse(lstProdutos.SelectedItems[0].SubItems[0].Text);
-                produto = produtoController.Buscar(produto);
-                formManutencaoProdutos formCad = new formManutencaoProdutos(produto);
-                formCad.ShowDialog();
-                CarregarLista(null);
-            }
-        }
+
 
         private void btPesquisar_Click(object sender, EventArgs e)
         {
@@ -149,9 +128,22 @@ namespace EtiquetaBioMundo
             toolTip.SetToolTip(btCadastrar, "Clique aqui para abrir a tela de cadastro de produtos e informações nutricionais.");
         }
 
-        private void lstProdutos_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvEtiqueta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvEtiqueta_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvEtiqueta.SelectedRows.Count > 0)
+            {
+                ProdutoModel produto = new ProdutoModel();
+                produto.Id = Int32.Parse(dgvEtiqueta.CurrentRow.Cells["colId"].Value.ToString());
+                produto = produtoController.Buscar(produto);
+                formManutencaoProdutos formCad = new formManutencaoProdutos(produto);
+                formCad.ShowDialog();
+                CarregarLista(null);
+            }
         }
     }
 }
