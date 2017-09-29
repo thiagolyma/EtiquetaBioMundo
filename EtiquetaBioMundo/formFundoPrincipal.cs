@@ -26,11 +26,18 @@ namespace EtiquetaBioMundo
         /// </summary>
         private void PesquisarProduto()
         {
-            List<ProdutoModel> listPrdod = null;
-            ProdutoModel produto = new ProdutoModel();
-            produto.Descricao = txtPesquisa.Text.Trim();
-            listPrdod = produtoController.BuscarPorDescricao(produto);
-            CarregarLista(listPrdod);
+            try
+            {
+                List<ProdutoModel> listPrdod = null;
+                ProdutoModel produto = new ProdutoModel();
+                produto.Descricao = txtPesquisa.Text.Trim();
+                listPrdod = produtoController.BuscarPorDescricao(produto);
+                CarregarLista(listPrdod);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         /// <summary>
         /// Prepara campos da tela para inicialização
@@ -45,14 +52,22 @@ namespace EtiquetaBioMundo
         /// <param name="listProdutos">Lisa de produtos previamente passada por quem deseja popular a ListView</param>
         private void CarregarLista(List<ProdutoModel> listProdutos)
         {
-            List<ProdutoModel> produtos = null;
-            produtos = listProdutos;
-            if (produtos == null) produtos = produtoController.BuscarTodos();
-            dgvEtiqueta.Rows.Clear();
-            produtos.ForEach(x =>
+            try
             {
-                dgvEtiqueta.Rows.Add(false, x.Id, x.Codigo, x.Descricao, x.PrecoVenda.ToString());
-            });
+                chkSelecaoItem.Checked = false;
+                List<ProdutoModel> produtos = null;
+                produtos = listProdutos;
+                if (produtos == null) produtos = produtoController.BuscarTodos();
+                dgvEtiqueta.Rows.Clear();
+                produtos.ForEach(x =>
+                {
+                    dgvEtiqueta.Rows.Add(false, x.Id, x.Codigo, x.Descricao, x.PrecoVenda.ToString());
+                });
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
         }
         /// <summary>
@@ -60,41 +75,76 @@ namespace EtiquetaBioMundo
         /// </summary>
         private void ImprimirEtiqueta()
         {
-            EtiquetaController etiquetaController = new EtiquetaController();
-            etiquetaController.RemoverTodos();
-            bool imprimir = false;
-            foreach (DataGridViewRow linha in dgvEtiqueta.Rows)
+            try
             {
-                bool colSelecionada = (bool)linha.Cells["colSelecionada"].Value;
-                if (colSelecionada == true)
+                EtiquetaController etiquetaController = new EtiquetaController();
+                etiquetaController.RemoverTodos();
+                bool imprimir = false;
+                foreach (DataGridViewRow linha in dgvEtiqueta.Rows)
                 {
-                    ProdutoModel produto = new ProdutoModel();
-                    produto.Id = Int32.Parse(linha.Cells["colId"].Value.ToString());
-                    produto = produtoController.Buscar(produto);
-                    for (int i = 0; i < Int32.Parse(linha.Cells["colQtdEtiqueta"].Value.ToString()); i++)
+                    if ((bool)linha.Cells["colSelecionada"].Value)
                     {
-                        EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                        ProdutoModel produto = new ProdutoModel();
+                        produto.Id = Int32.Parse(linha.Cells["colId"].Value.ToString());
+                        produto = produtoController.Buscar(produto);
+                        if (ValidaImpressaoEtiqueta(linha))
                         {
-                            DataCadastro = DateTime.Now,
-                            DataFabricao = DateTime.Now,
-                            DataValidade = DateTime.Now.AddDays(Int32.Parse(linha.Cells["colValidade"].Value.ToString())),
-                            Produto = produto
-                        };
-                        etiquetaController.Cadastrar(etiqueta);
-                        imprimir = true;
+                            string QtdEtiqueta = linha.Cells["colQtdEtiqueta"].Value.ToString();
+                            string DiasValidadeEtiqueta = linha.Cells["colValidade"].Value.ToString();
+                            for (int i = 0; i < Int32.Parse(QtdEtiqueta); i++)
+                            {
+                                EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                                {
+                                    DataCadastro = DateTime.Now,
+                                    DataFabricao = DateTime.Now,
+                                    DataValidade = DateTime.Now.AddDays(Int32.Parse(DiasValidadeEtiqueta)),
+                                    Produto = produto
+                                };
+                                etiquetaController.Cadastrar(etiqueta);
+                                imprimir = true;
+                            }
+                        }
                     }
+
+
                 }
+                if (imprimir)
+                {
+                    formRelatorioEtiqueta formRelatorio = new formRelatorioEtiqueta();
+                    formRelatorio.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Nenhum produto foi selecionado para imprimir etiqueta.");
 
             }
-            if (imprimir)
+            catch (Exception e)
             {
-                formRelatorioEtiqueta formRelatorio = new formRelatorioEtiqueta();
-                formRelatorio.ShowDialog();
+                MessageBox.Show(e.Message);
             }
-            else
-                MessageBox.Show("Nenhum produto foi selecionado para imprimir etiqueta.");
         }
-
+        /// <summary>
+        /// Valida se os prerequisitos impressão de etiqueta estão corretos (Quantidade de impressão >0 e Validade > 0)
+        /// </summary>
+        /// <param name="linha"></param>
+        /// <returns></returns>
+        private bool ValidaImpressaoEtiqueta(DataGridViewRow linha)
+        {
+            bool response = true;
+            if (linha.Cells["colQtdEtiqueta"].Value == null)
+            {
+                linha.Cells["colQtdEtiqueta"].Style.BackColor = Color.Red;
+                response = false;
+            }
+            if (linha.Cells["colValidade"].Value == null)
+            {
+                linha.Cells["colValidade"].Style.BackColor = Color.Red;
+                response = false;
+            }
+            if (response == false)
+                MessageBox.Show("Valores inválidos para o item: " + linha.Cells["colDesc"].Value.ToString()
+                    + ". Verifique as colunas pintadas em vermelho.");
+            return response;
+        }
 
         private void btCadastrar_Click(object sender, EventArgs e)
         {
@@ -107,7 +157,6 @@ namespace EtiquetaBioMundo
         {
             ImprimirEtiqueta();
         }
-
 
         private void btPesquisar_Click(object sender, EventArgs e)
         {

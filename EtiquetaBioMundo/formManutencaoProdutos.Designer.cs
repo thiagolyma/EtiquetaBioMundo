@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formManutencaoProdutos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpProduto = new System.Windows.Forms.GroupBox();
             this.txtDiasValidade = new System.Windows.Forms.MaskedTextBox();
@@ -45,11 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btImprimirEtiqueta = new System.Windows.Forms.Button();
-            this.btNovo = new System.Windows.Forms.Button();
-            this.btDuplicar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
-            this.btGravar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,6 +60,10 @@
             this.colUndEmb = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btImprimirEtiqueta = new System.Windows.Forms.Button();
+            this.btNovo = new System.Windows.Forms.Button();
+            this.btDuplicar = new System.Windows.Forms.Button();
+            this.btGravar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.grpProduto.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1038, 587);
+            this.panel1.Size = new System.Drawing.Size(1038, 596);
             this.panel1.TabIndex = 11;
             // 
             // grpProduto
@@ -95,7 +100,7 @@
             this.grpProduto.Enabled = false;
             this.grpProduto.Location = new System.Drawing.Point(12, 3);
             this.grpProduto.Name = "grpProduto";
-            this.grpProduto.Size = new System.Drawing.Size(507, 484);
+            this.grpProduto.Size = new System.Drawing.Size(507, 487);
             this.grpProduto.TabIndex = 1;
             this.grpProduto.TabStop = false;
             this.grpProduto.Text = "  Dados do Produto";
@@ -237,70 +242,30 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.btImprimirEtiqueta);
             this.panel2.Controls.Add(this.btNovo);
             this.panel2.Controls.Add(this.btDuplicar);
             this.panel2.Controls.Add(this.btExcluir);
             this.panel2.Controls.Add(this.btGravar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 487);
+            this.panel2.Location = new System.Drawing.Point(0, 496);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1038, 100);
             this.panel2.TabIndex = 12;
             // 
-            // btImprimirEtiqueta
-            // 
-            this.btImprimirEtiqueta.Enabled = false;
-            this.btImprimirEtiqueta.Location = new System.Drawing.Point(411, 22);
-            this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
-            this.btImprimirEtiqueta.Size = new System.Drawing.Size(119, 66);
-            this.btImprimirEtiqueta.TabIndex = 13;
-            this.btImprimirEtiqueta.Text = "&Etiqueta";
-            this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
-            this.btImprimirEtiqueta.Click += new System.EventHandler(this.btImprimirEtiqueta_Click);
-            // 
-            // btNovo
-            // 
-            this.btNovo.Location = new System.Drawing.Point(536, 22);
-            this.btNovo.Name = "btNovo";
-            this.btNovo.Size = new System.Drawing.Size(120, 66);
-            this.btNovo.TabIndex = 9;
-            this.btNovo.Text = "&Novo";
-            this.btNovo.UseVisualStyleBackColor = true;
-            this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
-            // 
-            // btDuplicar
-            // 
-            this.btDuplicar.Enabled = false;
-            this.btDuplicar.Location = new System.Drawing.Point(781, 22);
-            this.btDuplicar.Name = "btDuplicar";
-            this.btDuplicar.Size = new System.Drawing.Size(119, 66);
-            this.btDuplicar.TabIndex = 11;
-            this.btDuplicar.Text = "&Duplicar";
-            this.btDuplicar.UseVisualStyleBackColor = true;
-            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
-            // 
             // btExcluir
             // 
             this.btExcluir.Enabled = false;
-            this.btExcluir.Location = new System.Drawing.Point(906, 22);
+            this.btExcluir.Image = global::EtiquetaBioMundo.Properties.Resources.Actions_edit_delete_icon;
+            this.btExcluir.Location = new System.Drawing.Point(902, 22);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(120, 66);
+            this.btExcluir.Size = new System.Drawing.Size(124, 66);
             this.btExcluir.TabIndex = 12;
             this.btExcluir.Text = "&Excluir";
+            this.btExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btExcluir.UseVisualStyleBackColor = true;
             this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
-            // 
-            // btGravar
-            // 
-            this.btGravar.Enabled = false;
-            this.btGravar.Location = new System.Drawing.Point(662, 22);
-            this.btGravar.Name = "btGravar";
-            this.btGravar.Size = new System.Drawing.Size(114, 66);
-            this.btGravar.TabIndex = 10;
-            this.btGravar.Text = "&Gravar";
-            this.btGravar.UseVisualStyleBackColor = true;
-            this.btGravar.Click += new System.EventHandler(this.btGravar_Click);
             // 
             // panel3
             // 
@@ -309,7 +274,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(525, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(513, 487);
+            this.panel3.Size = new System.Drawing.Size(513, 496);
             this.panel3.TabIndex = 14;
             // 
             // panel4
@@ -357,12 +322,16 @@
             // colDescricao
             // 
             this.colDescricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colDescricao.DefaultCellStyle = dataGridViewCellStyle21;
             this.colDescricao.HeaderText = "Descrição";
             this.colDescricao.Name = "colDescricao";
             // 
             // colUndEmb
             // 
             this.colUndEmb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colUndEmb.DefaultCellStyle = dataGridViewCellStyle22;
             this.colUndEmb.HeaderText = "UND";
             this.colUndEmb.Name = "colUndEmb";
             this.colUndEmb.Width = 67;
@@ -370,6 +339,8 @@
             // colQtd
             // 
             this.colQtd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colQtd.DefaultCellStyle = dataGridViewCellStyle23;
             this.colQtd.HeaderText = "Qtd.";
             this.colQtd.Name = "colQtd";
             this.colQtd.Width = 64;
@@ -377,26 +348,80 @@
             // colVD
             // 
             this.colVD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colVD.DefaultCellStyle = dataGridViewCellStyle24;
             this.colVD.HeaderText = "%VD";
             this.colVD.Name = "colVD";
             this.colVD.Width = 68;
+            // 
+            // btImprimirEtiqueta
+            // 
+            this.btImprimirEtiqueta.Enabled = false;
+            this.btImprimirEtiqueta.Image = global::EtiquetaBioMundo.Properties.Resources.print_icon;
+            this.btImprimirEtiqueta.Location = new System.Drawing.Point(644, 22);
+            this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
+            this.btImprimirEtiqueta.Size = new System.Drawing.Size(124, 66);
+            this.btImprimirEtiqueta.TabIndex = 13;
+            this.btImprimirEtiqueta.Text = "&Imprimir Etiqueta";
+            this.btImprimirEtiqueta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
+            this.btImprimirEtiqueta.Click += new System.EventHandler(this.btImprimirEtiqueta_Click);
+            // 
+            // btNovo
+            // 
+            this.btNovo.Image = global::EtiquetaBioMundo.Properties.Resources.Files_New_File_icon1;
+            this.btNovo.Location = new System.Drawing.Point(384, 22);
+            this.btNovo.Name = "btNovo";
+            this.btNovo.Size = new System.Drawing.Size(124, 66);
+            this.btNovo.TabIndex = 9;
+            this.btNovo.Text = "&Novo";
+            this.btNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btNovo.UseVisualStyleBackColor = true;
+            this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
+            // 
+            // btDuplicar
+            // 
+            this.btDuplicar.Enabled = false;
+            this.btDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("btDuplicar.Image")));
+            this.btDuplicar.Location = new System.Drawing.Point(773, 22);
+            this.btDuplicar.Name = "btDuplicar";
+            this.btDuplicar.Size = new System.Drawing.Size(124, 66);
+            this.btDuplicar.TabIndex = 11;
+            this.btDuplicar.Text = "&Duplicar";
+            this.btDuplicar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btDuplicar.UseVisualStyleBackColor = true;
+            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
+            // 
+            // btGravar
+            // 
+            this.btGravar.Enabled = false;
+            this.btGravar.Image = global::EtiquetaBioMundo.Properties.Resources.symbol_check_icon;
+            this.btGravar.Location = new System.Drawing.Point(514, 22);
+            this.btGravar.Name = "btGravar";
+            this.btGravar.Size = new System.Drawing.Size(124, 66);
+            this.btGravar.TabIndex = 10;
+            this.btGravar.Text = "&Gravar";
+            this.btGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btGravar.UseVisualStyleBackColor = true;
+            this.btGravar.Click += new System.EventHandler(this.btGravar_Click);
             // 
             // formManutencaoProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 587);
+            this.ClientSize = new System.Drawing.Size(1038, 596);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "formManutencaoProdutos";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro/Edição de Produtos e Informações Nutricionais";
+            this.Text = "Cadastro/Edição de produtos e informações nutricionais";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.formManutencaoProdutos_KeyPress);
             this.panel1.ResumeLayout(false);
             this.grpProduto.ResumeLayout(false);

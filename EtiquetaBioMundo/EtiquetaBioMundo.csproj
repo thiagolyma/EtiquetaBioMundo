@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>EtiquetaBioMundo.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Paomedia-Small-N-Flat-Tag.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -120,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RelatorioEtiqueta\RelatorioEtiqueta.rdlc" />
     <None Include="RelatorioEtiqueta\EtiquetaBioMundo.RelatorioEtiqueta.DadosEtiqueta.datasource" />
@@ -150,6 +157,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Files-New-File-icon.png" />
+    <None Include="Resources\Files-New-File-icon1.png" />
+    <None Include="Resources\Actions-edit-delete-icon.png" />
+    <None Include="Resources\Healthcare-Clone-icon.png" />
+    <None Include="Resources\symbol-check-icon.png" />
+    <None Include="Resources\print-icon.png" />
+    <Content Include="Paomedia-Small-N-Flat-Tag.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

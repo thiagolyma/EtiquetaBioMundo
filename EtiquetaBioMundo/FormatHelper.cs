@@ -27,7 +27,7 @@ namespace EtiquetaBioMundo
             }
             catch (Exception erro)
             {
-
+                MessageBox.Show(erro.Message);
             }
         }
 

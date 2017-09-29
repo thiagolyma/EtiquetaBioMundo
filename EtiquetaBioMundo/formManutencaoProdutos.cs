@@ -39,15 +39,22 @@ namespace EtiquetaBioMundo
         /// </summary>
         private void CarregaListaInformacoesNutricionais()
         {
-            dgvInformacoesNutricionais.Rows.Clear();
-            List<InformacaoNutricionalModel> infNutricionais = null;
-            infNutricionais = infContoller.BuscarPorProduto(produtoModel);
-            if (infNutricionais != null && infNutricionais.Count > 0)
+            try
             {
-                infNutricionais.ForEach(x =>
+                dgvInformacoesNutricionais.Rows.Clear();
+                List<InformacaoNutricionalModel> infNutricionais = null;
+                infNutricionais = infContoller.BuscarPorProduto(produtoModel);
+                if (infNutricionais != null && infNutricionais.Count > 0)
                 {
-                    dgvInformacoesNutricionais.Rows.Add(x.Id.ToString(), x.Descricao.Trim(), x.UnidadeMedia.Trim(), x.Quantidade.ToString(), x.ValorDiario.ToString());
-                });
+                    infNutricionais.ForEach(x =>
+                    {
+                        dgvInformacoesNutricionais.Rows.Add(x.Id.ToString(), x.Descricao.Trim(), x.UnidadeMedia.Trim(), x.Quantidade.ToString(), x.ValorDiario.ToString());
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
 
         }
@@ -57,16 +64,24 @@ namespace EtiquetaBioMundo
         /// <param name="produto"></param>
         private void PreencherCamposTela(ProdutoModel produto)
         {
-            if (produto != null)
+            try
             {
-                produtoModel = produto;
-                txtCodigo.Text = produto.Codigo;
-                txtDescricao.Text = produto.Descricao;
-                txtIngredientes.Text = produto.Ingrediente;
-                txtPrecoVenda.Text = produto.PrecoVenda.ToString();
-                txtUnidadeEmbalagem.Text = produto.UnidadeMedida;
-
-                AtualizarAmbienteCadastro(true);
+                if (produto != null)
+                {
+                    produtoModel = produto;
+                    txtCodigo.Text = produto.Codigo;
+                    txtDescricao.Text = produto.Descricao;
+                    txtIngredientes.Text = produto.Ingrediente;
+                    txtPrecoVenda.Text = produto.PrecoVenda.ToString();
+                    txtUnidadeEmbalagem.Text = produto.UnidadeMedida;
+                    txtQtdPorcao.Text = produto.QuantidadePorcao.ToString();
+                    txtDiasValidade.Text = produto.QuantidadeDiasValidade.ToString();
+                    AtualizarAmbienteCadastro(true);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -76,17 +91,23 @@ namespace EtiquetaBioMundo
         /// <returns></returns>
         private void MontarObjetoProduto()
         {
-            if (produtoModel == null)
-                produtoModel = new ProdutoModel();
+            try
+            {
+                if (produtoModel == null)
+                    produtoModel = new ProdutoModel();
 
-            produtoModel.Codigo = txtCodigo.Text.Trim();
-            produtoModel.Descricao = txtDescricao.Text.Trim();
-            produtoModel.PrecoVenda = Decimal.Parse(txtPrecoVenda.Text.Trim());
-            produtoModel.Ingrediente = txtIngredientes.Text.Trim();
-            produtoModel.UnidadeMedida = txtUnidadeEmbalagem.Text.Trim();
-            produtoModel.QuantidadeDiasValidade = Int32.Parse(txtDiasValidade.Text.Trim());
-            produtoModel.QuantidadePorcao = decimal.Parse(txtQtdPorcao.Text.Trim());
-
+                produtoModel.Codigo = txtCodigo.Text.Trim();
+                produtoModel.Descricao = txtDescricao.Text.Trim();
+                produtoModel.PrecoVenda = Decimal.Parse(txtPrecoVenda.Text.Trim());
+                produtoModel.Ingrediente = txtIngredientes.Text.Trim();
+                produtoModel.UnidadeMedida = txtUnidadeEmbalagem.Text.Trim();
+                produtoModel.QuantidadeDiasValidade = Int32.Parse(txtDiasValidade.Text.Trim());
+                produtoModel.QuantidadePorcao = decimal.Parse(txtQtdPorcao.Text.Trim());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         /// <summary>
@@ -97,14 +118,21 @@ namespace EtiquetaBioMundo
         private bool ValidaGravacao(ProdutoModel produto)
         {
             bool response = false;
-            if (produto.Descricao.Trim().Length > 0
-                && produto.Codigo.Trim().Length > 0
-                && produto.Ingrediente.Trim().Length > 0
-                && produto.PrecoVenda > 0)
+            try
             {
-                response = true;
-            }
+                if (produto.Descricao.Trim().Length > 0
+                    && produto.Codigo.Trim().Length > 0
+                    && produto.Ingrediente.Trim().Length > 0
+                    && produto.PrecoVenda > 0)
+                {
+                    response = true;
+                }
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             return response;
         }
         /// <summary>
@@ -113,59 +141,80 @@ namespace EtiquetaBioMundo
         /// <param name="statusHabilitado"></param>
         private void AtualizarAmbienteCadastro(bool statusHabilitado)
         {
-            btDuplicar.Enabled = statusHabilitado;
-            btExcluir.Enabled = statusHabilitado;
-            btGravar.Enabled = statusHabilitado;
-            grpProduto.Enabled = statusHabilitado;
-            btDuplicar.Enabled = statusHabilitado;
-            btImprimirEtiqueta.Enabled = statusHabilitado;
-            dgvInformacoesNutricionais.Enabled = statusHabilitado;
-            btGravar.Text = produtoModel != null && produtoModel.Id > 0 ? "Alterar" : "Cadastrar";
+            try
+            {
+                btDuplicar.Enabled = statusHabilitado;
+                btExcluir.Enabled = statusHabilitado;
+                btGravar.Enabled = statusHabilitado;
+                grpProduto.Enabled = statusHabilitado;
+                btDuplicar.Enabled = statusHabilitado;
+                btImprimirEtiqueta.Enabled = statusHabilitado;
+                dgvInformacoesNutricionais.Enabled = statusHabilitado;
+                btGravar.Text = produtoModel != null && produtoModel.Id > 0 ? "Alterar" : "Cadastrar";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         /// <summary>
         ///  Prepara campos da tela para inicialização
         /// </summary>
         private void InicializaCamposForm()
         {
-            grpProduto.Enabled = true;
-            txtCodigo.Text = "";
-            txtDescricao.Text = "";
-            txtPrecoVenda.Text = "0,00";
-            txtIngredientes.Text = "";
-            txtDiasValidade.Text = "01";
-            txtQtdPorcao.Text = "0,00";
-            txtUnidadeEmbalagem.Text = "g";
-            txtCodigo.Focus();
-            dgvInformacoesNutricionais.Rows.Clear();
+            try
+            {
+                grpProduto.Enabled = true;
+                txtCodigo.Text = "";
+                txtDescricao.Text = "";
+                txtPrecoVenda.Text = "0,00";
+                txtIngredientes.Text = "";
+                txtDiasValidade.Text = "01";
+                txtQtdPorcao.Text = "0,00";
+                txtUnidadeEmbalagem.Text = "g";
+                txtCodigo.Focus();
+                dgvInformacoesNutricionais.Rows.Clear();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         /// <summary>
         /// Popula a tabela de etiquetas com o produtoModel atual e aciona o formulário de impressão
         /// </summary>
         private void GerarEtiquetaImpressao()
         {
-            if (produtoModel != null && produtoModel.Id > 0)
+            try
             {
-                String QtdSolicitada = Interaction.InputBox("Informe a quantidade de etiquetas que deseja imprimir:", "Quantidade Númerica", "1", -1, -1);
-                QtdSolicitada = QtdSolicitada.Trim().Length == 0 ? "1" : QtdSolicitada;
-
-                EtiquetaController etiquetaController = new EtiquetaController();
-                etiquetaController.RemoverTodos();
-                for (int i = 0; i < Int32.Parse(QtdSolicitada); i++)
+                if (produtoModel != null && produtoModel.Id > 0)
                 {
-                    EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                    String QtdSolicitada = Interaction.InputBox("Informe a quantidade de etiquetas que deseja imprimir:", "Quantidade Númerica", "1", -1, -1);
+                    QtdSolicitada = QtdSolicitada.Trim().Length == 0 ? "1" : QtdSolicitada;
+
+                    EtiquetaController etiquetaController = new EtiquetaController();
+                    etiquetaController.RemoverTodos();
+                    for (int i = 0; i < Int32.Parse(QtdSolicitada); i++)
                     {
-                        DataCadastro = DateTime.Now,
-                        DataFabricao = DateTime.Now,
-                        DataValidade = DateTime.Now.AddDays(Int32.Parse(txtDiasValidade.Text.Trim())),
-                        Produto = produtoModel
-                    };
-                    etiquetaController.Cadastrar(etiqueta);
+                        EtiquetaImpressaModel etiqueta = new EtiquetaImpressaModel()
+                        {
+                            DataCadastro = DateTime.Now,
+                            DataFabricao = DateTime.Now,
+                            DataValidade = DateTime.Now.AddDays(Int32.Parse(txtDiasValidade.Text.Trim())),
+                            Produto = produtoModel
+                        };
+                        etiquetaController.Cadastrar(etiqueta);
+                    }
+                    formRelatorioEtiqueta frmEtiqueta = new formRelatorioEtiqueta();
+                    frmEtiqueta.ShowDialog();
                 }
-                formRelatorioEtiqueta frmEtiqueta = new formRelatorioEtiqueta();
-                frmEtiqueta.ShowDialog();
+                else
+                    MessageBox.Show("Produto inválido!");
             }
-            else
-                MessageBox.Show("Produto inválido!");
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
         }
         /// <summary>
@@ -173,50 +222,67 @@ namespace EtiquetaBioMundo
         /// </summary>
         private void GravarInformacoesNutricionais()
         {
-            if (produtoModel != null && produtoModel.Id > 0)
+            try
             {
-                foreach (DataGridViewRow linha in dgvInformacoesNutricionais.Rows)
+                if (produtoModel != null && produtoModel.Id > 0)
                 {
-                    if (linha.Cells["colDescricao"].Value != null)
+                    foreach (DataGridViewRow linha in dgvInformacoesNutricionais.Rows)
                     {
-                        InformacaoNutricionalModel informacaoNutricionalModel = new InformacaoNutricionalModel();
-                        if (linha.Cells["colID"].Value != null)
+                        if (linha.Cells["colDescricao"].Value != null)
                         {
-                            informacaoNutricionalModel.Id = Int32.Parse(linha.Cells["colID"].Value.ToString().Trim());
-                            informacaoNutricionalModel = infContoller.Buscar(informacaoNutricionalModel);
+                            InformacaoNutricionalModel informacaoNutricionalModel = new InformacaoNutricionalModel();
+                            if (linha.Cells["colID"].Value != null)
+                            {
+                                informacaoNutricionalModel.Id = Int32.Parse(linha.Cells["colID"].Value.ToString().Trim());
+                                informacaoNutricionalModel = infContoller.Buscar(informacaoNutricionalModel);
+                            }
+                            informacaoNutricionalModel.DataCadastro = DateTime.Now;
+                            informacaoNutricionalModel.Descricao = linha.Cells["colDescricao"].Value.ToString().Trim();
+                            informacaoNutricionalModel.UnidadeMedia = linha.Cells["colUndEmb"].Value.ToString().Trim();
+                            informacaoNutricionalModel.Quantidade = Decimal.Parse(linha.Cells["colQtd"].Value.ToString().Trim());
+                            informacaoNutricionalModel.ValorDiario = Decimal.Parse(linha.Cells["colVD"].Value.ToString().Trim());
+                            informacaoNutricionalModel.Produto = produtoModel;
+                            if (informacaoNutricionalModel.Id > 0)
+                                infContoller.Atualizar(informacaoNutricionalModel);
+                            else
+                                infContoller.Cadastrar(informacaoNutricionalModel);
                         }
-                        informacaoNutricionalModel.DataCadastro = DateTime.Now;
-                        informacaoNutricionalModel.Descricao = linha.Cells["colDescricao"].Value.ToString().Trim();
-                        informacaoNutricionalModel.UnidadeMedia = linha.Cells["colUndEmb"].Value.ToString().Trim();
-                        informacaoNutricionalModel.Quantidade = Decimal.Parse(linha.Cells["colQtd"].Value.ToString().Trim());
-                        informacaoNutricionalModel.ValorDiario = Decimal.Parse(linha.Cells["colVD"].Value.ToString().Trim());
-                        informacaoNutricionalModel.Produto = produtoModel;
-                        if (informacaoNutricionalModel.Id > 0)
-                            infContoller.Atualizar(informacaoNutricionalModel);
-                        else
-                            infContoller.Cadastrar(informacaoNutricionalModel);
                     }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
-
+        /// <summary>
+        /// Remover a informação nutricional selecionada
+        /// </summary>
         private void RemoverInformacaoNutricional()
         {
-            if (dgvInformacoesNutricionais.CurrentRow.Cells["colID"].Value != null)
+            try
             {
-                DialogResult result = MessageBox.Show("Deseja excluir a informação nutricional selecionada?", "Excluir", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (dgvInformacoesNutricionais.CurrentRow.Cells["colID"].Value != null)
                 {
-                    InformacaoNutricionalModel informacaoNutricional = new InformacaoNutricionalModel();
-                    informacaoNutricional.Id = Int32.Parse(dgvInformacoesNutricionais.CurrentRow.Cells["colID"].Value.ToString().Trim());
-                    informacaoNutricional = infContoller.Buscar(informacaoNutricional);
-                    infContoller.Remover(informacaoNutricional);
+                    DialogResult result = MessageBox.Show("Deseja excluir a informação nutricional selecionada?", "Excluir", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        InformacaoNutricionalModel informacaoNutricional = new InformacaoNutricionalModel();
+                        informacaoNutricional.Id = Int32.Parse(dgvInformacoesNutricionais.CurrentRow.Cells["colID"].Value.ToString().Trim());
+                        informacaoNutricional = infContoller.Buscar(informacaoNutricional);
+                        infContoller.Remover(informacaoNutricional);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 
         private void btGravar_Click(object sender, EventArgs e)
         {
+
             MontarObjetoProduto();
             if (ValidaGravacao(produtoModel))
             {
@@ -225,14 +291,14 @@ namespace EtiquetaBioMundo
                     produtoController.Atualizar(produtoModel);
                     GravarInformacoesNutricionais();
                     CarregaListaInformacoesNutricionais();
-                    MessageBox.Show("Produto [" + produtoModel.Id + "] atualizado com sucesso.");
+                    MessageBox.Show("Produto [" + produtoModel.Descricao + "] atualizado com sucesso.");
                 }
                 else
                 {
                     produtoController.Cadastrar(produtoModel);
                     GravarInformacoesNutricionais();
                     CarregaListaInformacoesNutricionais();
-                    MessageBox.Show("Produto [" + produtoModel.Id + "] cadastrado com sucesso.");
+                    MessageBox.Show("Produto [" + produtoModel.Descricao + "] cadastrado com sucesso.");
                 }
                 AtualizarAmbienteCadastro(produtoModel != null && produtoModel.Id > 0 ? true : false);
             }
@@ -269,13 +335,20 @@ namespace EtiquetaBioMundo
 
         private void btDuplicar_Click(object sender, EventArgs e)
         {
-            produtoModel = null;
-            foreach (DataGridViewRow linha in dgvInformacoesNutricionais.Rows)
+            if (produtoModel != null && produtoModel.Id > 0)
             {
-                linha.Cells["colID"].Value = null;
+                DialogResult result = MessageBox.Show("Deseja duplicar o produto?", "Duplicar", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    produtoModel = null;
+                    foreach (DataGridViewRow linha in dgvInformacoesNutricionais.Rows)
+                    {
+                        linha.Cells["colID"].Value = null;
+                    }
+                    AtualizarAmbienteCadastro(true);
+                    MontarObjetoProduto();
+                }
             }
-            AtualizarAmbienteCadastro(true);
-            MontarObjetoProduto();
         }
 
         private void btImprimirEtiqueta_Click(object sender, EventArgs e)
