@@ -315,7 +315,6 @@
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
                               <Top>0.03175cm</Top>
-                              <Left>0cm</Left>
                               <Height>0.82861cm</Height>
                               <Width>3.47008cm</Width>
                               <Style>
@@ -331,7 +330,7 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>1.21549cm</Width>
+                                    <Width>1.0638cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>0.8098cm</Width>
@@ -340,7 +339,7 @@
                                     <Width>0.82396cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.62083cm</Width>
+                                    <Width>0.77252cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -358,7 +357,7 @@
                                                   <TextRun>
                                                     <Value>Porção</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>6pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -387,7 +386,7 @@
                                                   <TextRun>
                                                     <Value>UND</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>6pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -421,7 +420,7 @@
                                                   <TextRun>
                                                     <Value>QTD</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>6pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -455,7 +454,7 @@
                                                   <TextRun>
                                                     <Value>%VD</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>6pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>

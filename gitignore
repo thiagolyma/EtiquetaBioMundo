@@ -1,0 +1,12 @@
+.gitignore
+
+*/bin
+*/obj
+*.suo
+*.cache
+*.log
+*.htm
+*.baml
+*.txt
+*.dll
+*.exe

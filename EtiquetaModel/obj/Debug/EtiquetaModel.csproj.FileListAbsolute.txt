@@ -1,0 +1,6 @@
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\bin\Debug\EtiquetaModel.dll
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\bin\Debug\EtiquetaModel.pdb
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.csprojResolveAssemblyReference.cache
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.csproj.CoreCompileInputs.cache
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.dll
+D:\Repositorio\VS\EtiquetaBioMundo\EtiquetaModel\obj\Debug\EtiquetaModel.pdb
