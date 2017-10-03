@@ -239,8 +239,8 @@ namespace EtiquetaBioMundo
                             informacaoNutricionalModel.DataCadastro = DateTime.Now;
                             informacaoNutricionalModel.Descricao = linha.Cells["colDescricao"].Value.ToString().Trim();
                             informacaoNutricionalModel.UnidadeMedia = linha.Cells["colUndEmb"].Value.ToString().Trim();
-                            informacaoNutricionalModel.Quantidade = Decimal.Parse(linha.Cells["colQtd"].Value.ToString().Trim());
-                            informacaoNutricionalModel.ValorDiario = Decimal.Parse(linha.Cells["colVD"].Value.ToString().Trim());
+                            informacaoNutricionalModel.Quantidade = (linha.Cells["colQtd"].Value.ToString().Trim());
+                            informacaoNutricionalModel.ValorDiario = (linha.Cells["colVD"].Value.ToString().Trim());
                             informacaoNutricionalModel.Produto = produtoModel;
                             if (informacaoNutricionalModel.Id > 0)
                                 infContoller.Atualizar(informacaoNutricionalModel);

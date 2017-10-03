@@ -16,8 +16,8 @@ namespace EtiquetaModel
         public string Descricao { get; set; }
         [MaxLength(10)]
         public string UnidadeMedia { get; set; }
-        public decimal Quantidade { get; set; }
-        public decimal ValorDiario { get; set; }
+        public string Quantidade { get; set; }
+        public string ValorDiario { get; set; }
         [ForeignKey("Produto")]
         public int ProdutoId { get; set; }
         public virtual ProdutoModel Produto { get; set; }

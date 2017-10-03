@@ -11,10 +11,12 @@ namespace EtiquetaBLL
     public class EtiquetaController : IController<EtiquetaImpressaModel>
     {
         private EtiquetaRepository etiquetaRep;
+        private InformacaoNutricionalController infController;
 
         public EtiquetaController()
         {
             etiquetaRep = new EtiquetaRepository();
+            infController = new InformacaoNutricionalController();
         }
 
         public EtiquetaImpressaModel Atualizar(EtiquetaImpressaModel obj)
@@ -37,6 +39,14 @@ namespace EtiquetaBLL
             List<EtiquetaImpressaModel> response = null;
             response = etiquetaRep.GetAll().ToList();
             return response;
+        }
+
+        public List<InformacaoNutricionalModel> BuscarTodasInformacoesNutricionais(ProdutoModel produto)
+        {
+            List<InformacaoNutricionalModel> response = null;
+            response = infController.BuscarPorProduto(produto);
+            return response;
+
         }
 
         public EtiquetaImpressaModel Cadastrar(EtiquetaImpressaModel obj)

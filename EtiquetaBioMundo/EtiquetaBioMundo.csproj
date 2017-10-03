@@ -119,6 +119,7 @@
     <Compile Include="formManutencaoProdutos.Designer.cs">
       <DependentUpon>formManutencaoProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="RelatorioEtiqueta\DadosInfNutricional.cs" />
     <Compile Include="RelatorioEtiqueta\formRelatorioEtiqueta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,7 +152,8 @@
     <EmbeddedResource Include="RelatorioEtiqueta\RelatorioEtiqueta.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="RelatorioEtiqueta\EtiquetaBioMundo.RelatorioEtiqueta.DadosEtiqueta.datasource" />
+    <EmbeddedResource Include="RelatorioEtiqueta\RelatorioInfNutricional.rdlc" />
+    <None Include="EtiquetaBioMundo.RelatorioEtiqueta.DadosInfNutricional.datasource" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
